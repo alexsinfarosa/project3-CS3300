@@ -1,0 +1,118 @@
+<html>
+<head>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="js/plot.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+<!-- Google Fonts -->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+
+<link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+<body>
+<div class="container text-center">
+  <div class="bg-dark">
+    <h1>Clustering <span class="logo">Universities</span> Groups</h1>
+  </div>
+
+  <div class="margin-bottom">
+  	<button class="btn btn-info" id="northAmerica">North America</button>
+  	<button class="btn btn-info" id="europeanUnion">European Union</button>
+  	<button class="btn btn-info" id="outsideUSEU">Non EU/US</button>
+  	<button class="btn btn-info" id="top50">Top 50 All</button>
+  	<button class="btn btn-info" id="international">Internationalization</button>
+  	<button class="btn btn-info" id="reputation">Academic Reputation</button>
+  	<button class="btn btn-info" id="faculty">Faculty Analysis</button>
+  </div>
+
+  <div id="points" class= "information"></div>
+
+  	<div id="location" class= "information">
+      <p id="loc0"></p>
+      <p id="loc1"></p>
+      <p id="loc2"></p>
+      <p id="loc3"></p>
+      <p id="loc4"></p>		
+      <p id="loc5"></p>
+      <p id="loc6"></p>
+      <p id="loc7"></p>
+      <p id="loc8"></p>	
+  	</div>
+  </div>
+
+<script>
+//Global Variables
+var file = "csv/EuropeanUnion.csv";  //The csv file
+var criteriaX = "International Students Score"; //The x axis
+var criteriaY = "International Faculty Score"; //The y axis
+plotAnimation(file, criteriaX, criteriaY);  //The command to the initial animation with this attr
+
+
+d3.select("#northAmerica").on("click", function () {
+  //changes the file
+  file = "csv/northAmerica.csv";
+  //restarts the animation
+  plotAnimation(file, criteriaX, criteriaY);
+
+});
+
+d3.select("#europeanUnion").on("click", function () {
+  //changes the file
+  file = "csv/EuropeanUnion.csv";
+  //restarts the animation
+  plotAnimation(file, criteriaX, criteriaY);
+
+});
+
+d3.select("#top50").on("click", function () {
+  //changes the file
+  file = "csv/top50world.csv";
+  //restarts the animation
+  plotAnimation(file, criteriaX, criteriaY);
+
+});
+
+d3.select("#outsideUSEU").on("click", function () {
+  //changes the file
+  file = "csv/NonEU-CA-US.csv";
+  //restarts the animation
+  plotAnimation(file, criteriaX, criteriaY);
+
+});
+
+d3.select("#international").on("click", function () {
+  
+  //changes the y and x axis
+  criteriaX = "International Students Score";
+  criteriaY = "International Faculty Score";
+  //restarts the animation
+  plotAnimation(file, criteriaX, criteriaY);
+
+});
+
+d3.select("#reputation").on("click", function () {
+  
+  //changes the y and x axis
+  criteriaX = "Academic Reputation Score";
+  criteriaY = "Employer Reputation Score";
+  //restarts the animation
+  plotAnimation(file, criteriaX, criteriaY);
+
+});
+
+d3.select("#faculty").on("click", function () {
+  
+  //changes the y and x axis
+  criteriaX = "Faculty Student Score";
+  criteriaY = "Citations Per Faculty Score";
+  //restarts the animation
+  plotAnimation(file, criteriaX, criteriaY);
+
+});
+</script>
+
+</body>
+</html>

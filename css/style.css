@@ -1,0 +1,66 @@
+/* Very Basic CSS */
+
+body { 
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 1.6rem;
+}
+
+h1 {
+	margin-bottom: 3rem;
+	color: white;
+	font-size: 6rem;
+	padding: 2rem;
+	font-family: 'Raleway';
+}
+
+.logo {
+	font-size: 5rem;
+	color: #FF7500;
+	background: #27211E;
+	border-radius: 10px;
+	text-transform: uppercase;
+	padding: 1rem;
+	letter-spacing: 1px;
+	margin-bottom: 3rem;
+}
+
+.bg-dark {
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	border: 1px solid #333;
+	background: #333;
+	border: none;
+}
+
+.btn-info {
+	background: #FF7500;
+	color: white;
+	font-size: 2rem;
+	margin-left: 10px;
+}
+.btn .btn-info:hover{
+	color: #D35400;
+}
+
+
+svg { 
+	border: solid black 1px; 
+	margin: 0 auto;
+}
+
+
+.information{
+	display: inline-block;
+	/*background: red;*/
+}
+
+#location{
+  float: right;
+  padding-right: 20px;
+  margin-right: 200px;
+}
+
+.margin-bottom {
+	margin-bottom: 3rem;
+}
