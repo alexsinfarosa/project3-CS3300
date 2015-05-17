@@ -1,6 +1,7 @@
 /* Very Basic CSS */
 
 body { 
+	-webkit-font-smoothing: antialiased;
 	font-family: 'Open Sans Condensed', sans-serif;
 	font-size: 1.6rem;
 }
@@ -32,23 +33,19 @@ h1 {
 	background: #333;
 	border: none;
 }
-.bg-mio {
-	background: #67809F;
-}
+
 .btn-info {
-	background: #FF7500;
+	background: #C0392B;
 	color: white;
 	font-size: 2rem;
 	margin-left: 10px;
 	margin-top: 10px;
-}
-.btn .btn-info:hover{
-	color: #D35400;
+	border-radius: 9px;
+	letter-spacing: 1px;
 }
 
 
 svg { 
-	/*border: solid black 1px; */
 	margin: 0 auto;
 }
 
