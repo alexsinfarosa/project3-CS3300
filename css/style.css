@@ -20,7 +20,6 @@ h1 {
 	background: #27211E;
 	border-radius: 10px;
 	text-transform: uppercase;
-	/*padding: 1rem;*/
 	letter-spacing: 1px;
 	margin-bottom: 3rem;
 }
@@ -37,18 +36,17 @@ h1 {
 .btn-info {
 	background: #C0392B;
 	color: white;
-	font-size: 2rem;
+	font-size: 1.6rem;
 	margin-left: 10px;
 	margin-top: 10px;
 	border-radius: 9px;
 	letter-spacing: 1px;
+	font-weight: bold;
 }
-
 
 svg { 
 	margin: 0 auto;
 }
-
 
 .information{
 	padding: 2rem;
@@ -57,14 +55,10 @@ svg {
 	text-align: left;
 	color: #22313F;
 	font-size: 1.8rem;
-
-
 }
 
 #location{
-  float: right;
-  padding-right: 20px;
-  margin-right: 200px;
+
 }
 
 .margin-bottom {
