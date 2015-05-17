@@ -19,7 +19,7 @@ h1 {
 	background: #27211E;
 	border-radius: 10px;
 	text-transform: uppercase;
-	padding: 1rem;
+	/*padding: 1rem;*/
 	letter-spacing: 1px;
 	margin-bottom: 3rem;
 }
@@ -32,12 +32,15 @@ h1 {
 	background: #333;
 	border: none;
 }
-
+.bg-mio {
+	background: #67809F;
+}
 .btn-info {
 	background: #FF7500;
 	color: white;
 	font-size: 2rem;
 	margin-left: 10px;
+	margin-top: 10px;
 }
 .btn .btn-info:hover{
 	color: #D35400;
@@ -45,14 +48,20 @@ h1 {
 
 
 svg { 
-	border: solid black 1px; 
+	/*border: solid black 1px; */
 	margin: 0 auto;
 }
 
 
 .information{
+	padding: 2rem;
+	margin: 0 auto;
 	display: inline-block;
-	/*background: red;*/
+	text-align: left;
+	color: #22313F;
+	font-size: 1.8rem;
+
+
 }
 
 #location{
