@@ -8,7 +8,7 @@ function plotAnimation(file, criteriaX, criteriaY) {
     //Decides the global variables
 	var height = 500;
 	var width = 500;
-	var padding = 50;
+	var padding = 10;
 
 	var svg = d3.select("#points").append("svg").attr("height", height).attr("width", width);
 		
