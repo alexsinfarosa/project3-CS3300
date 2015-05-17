@@ -69,6 +69,14 @@ svg {
 	letter-spacing: 1px;
 }
 
+.loc8 {
+	font-size: 1.4rem;
+	font-weight: bold;
+}
+
 .margin-bottom {
 	margin-bottom: 3rem;
+}
+.margin-top {
+	margin-top: 3rem;
 }
