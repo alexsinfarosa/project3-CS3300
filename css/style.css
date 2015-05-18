@@ -44,6 +44,10 @@ h1 {
     outline: 0 none;
 }
 
+.fa-university {
+	font-size: 5rem;
+}
+
 svg { 
 	margin: 0 auto;
 }
