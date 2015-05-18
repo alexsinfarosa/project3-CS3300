@@ -69,7 +69,6 @@ var criteriaX = "International Students Score"; //The x axis
 var criteriaY = "International Faculty Score"; //The y axis
 plotAnimation(file, criteriaX, criteriaY);  //The command to the initial animation with this attr
 
-
 d3.select("#northAmerica").on("click", function () {
   //changes the file
   file = "csv/northAmerica.csv";
@@ -102,8 +101,7 @@ d3.select("#outsideUSEU").on("click", function () {
 
 });
 
-d3.select("#international").on("click", function () {
-  
+d3.select("#international").on("click", function () { 
   //changes the y and x axis
   criteriaX = "International Students Score";
   criteriaY = "International Faculty Score";
@@ -112,8 +110,7 @@ d3.select("#international").on("click", function () {
 
 });
 
-d3.select("#reputation").on("click", function () {
-  
+d3.select("#reputation").on("click", function () { 
   //changes the y and x axis
   criteriaX = "Academic Reputation Score";
   criteriaY = "Employer Reputation Score";
@@ -122,8 +119,7 @@ d3.select("#reputation").on("click", function () {
 
 });
 
-d3.select("#faculty").on("click", function () {
-  
+d3.select("#faculty").on("click", function () { 
   //changes the y and x axis
   criteriaX = "Faculty Student Score";
   criteriaY = "Citations Per Faculty Score";

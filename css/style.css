@@ -40,6 +40,10 @@ h1 {
 	letter-spacing: 1px;
 }
 
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+
 svg { 
 	margin: 0 auto;
 }
