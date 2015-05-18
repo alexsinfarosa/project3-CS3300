@@ -10,20 +10,14 @@ function plotAnimation(file, criteriaX, criteriaY) {
 	var width = 500;
 	var padding = 50;
 
-	var svg = d3.select("#points").append("svg").attr("height", height).attr("width", width);
-		
+	var svg = d3.select("#points").append("svg").attr("height", height).attr("width", width);	
 	var lines, circles, centroids;
-
 	var xScale, yScale, points;
-
 	var universities;
 
     //starts the plot
 	d3.csv(file, function (error, data) {
-
 		universities = data;
-	    
-	    
 		points = universities.map(function (university) {
 			// Map variables to the file
 			return {
@@ -86,7 +80,6 @@ function plotAnimation(file, criteriaX, criteriaY) {
 			d3.select("#loc6").text("International Students Score: "+d.InternationalStudentsScore);
 			d3.select("#loc7").text("International Faculty Score: "+d.InternationalFacultyScore);
 			d3.select("#loc8").text("Overall Rank: " + d.Overall);
-
 		});
 
 		circles2 = svg.selectAll(".point2").data(points);
@@ -111,19 +104,14 @@ function plotAnimation(file, criteriaX, criteriaY) {
 			d3.select("#loc8").text("Overall Rank: " + d.Overall);
 		});
 
-
 		// 4 Cluster, can be changed
 		centroids = new Array(4);
 		for (var i = 0; i < centroids.length; i++) {
 			// Initialize from a randomly chosen point
 			var randomPoint = points[Math.floor(Math.random() * points.length)];
 			centroids[i] = { x: randomPoint.x, y: randomPoint.y };
-
 		}
-
 		findClosest();
-
-
 	});
 	  
     //animation itself
@@ -131,7 +119,6 @@ function plotAnimation(file, criteriaX, criteriaY) {
 	   waitAndChangeMeans(i+1);
 
 	}
-
 
 
 	function waitAndChangeMeans(time) {
@@ -142,9 +129,6 @@ function plotAnimation(file, criteriaX, criteriaY) {
 			findClosest();
 	}, (time*1700));  
 	}
-
-
-
 
 
    //support functions for the animation
@@ -192,7 +176,6 @@ function plotAnimation(file, criteriaX, criteriaY) {
 	}
 
 	function findClosest() {
-
 		points.forEach(function (point) {
 			var nearest;
 			var shortestDistance = Number.MAX_VALUE;
@@ -209,9 +192,7 @@ function plotAnimation(file, criteriaX, criteriaY) {
 				}
 			}
 
-				point.cluster = nearest;
-				
-			
+				point.cluster = nearest;		
 		});
         
         //color of the circles depending on the cluster

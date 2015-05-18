@@ -31,15 +31,13 @@ h1 {
 	border: none;
 }
 
-.btn-info {
-	background: #C0392B;
-	color: white;
+.btn-danger {
 	font-size: 1.6rem;
 	margin-left: 10px;
 	margin-top: 10px;
+	font-weight: bold;
 	border-radius: 9px;
 	letter-spacing: 1px;
-	font-weight: bold;
 }
 
 svg { 
