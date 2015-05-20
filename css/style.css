@@ -31,6 +31,11 @@ h1 {
 	border: none;
 }
 
+.point:hover {
+	cursor: pointer; 
+}
+
+
 .btn-danger {
 	font-size: 1.6rem;
 	margin-left: 10px;
@@ -53,19 +58,22 @@ svg {
 }
 
 .information{
+	
 	padding: 2rem;
 	margin: 0 auto;
+	margin-left: 50px;
 	display: inline-block;
 	text-align: left;
 	color: #22313F;
 	font-size: 1.8rem;
+	
 }
 
 .title {
 	text-align: center;
 	font-size: 2.4rem;
 	color: #22313F;
-	border-bottom: 1px solid #22313F;
+	/*border-bottom: 1px solid #22313F;*/
 	margin-bottom: 20px;
 }
 .university {
@@ -77,8 +85,20 @@ svg {
 
 .loc8 {
 	font-size: 1.4rem;
-	font-weight: bold;
+	font-weight: bold;	
 }
+
+
+#location {
+	height: 550px;
+	border: 1px solid #22313F ;
+	border-radius: 9px;
+	width: 81%;
+	margin-bottom: 18px;
+	margin-left: 10px;
+	padding-left: 20px;
+}
+
 
 .margin-bottom {
 	margin-bottom: 3rem;

@@ -1,6 +1,19 @@
+//array of random colors
+	var randomColors = ["cyan", "red", "green", "orange", "blue"];
+	for (var v = 0; v < 100; v++) {
+	    randomColors.push(getRandomColor());
+	}
 
+	function getRandomColor() {
+	    var letters = '0123456789ABCDEF'.split('');
+	    var color = '#';
+	    for (var i = 0; i < 6; i++ ) {
+	        color += letters[Math.floor(Math.random() * 16)];
+	    }
+	    return color;
+    }
 
-function plotAnimation(file, criteriaX, criteriaY) {
+function plotAnimation(file, criteriaX, criteriaY, textX, textY, clusters) {
     //remove the previous SVG
 	d3.select("svg")
        .remove();
@@ -10,10 +23,32 @@ function plotAnimation(file, criteriaX, criteriaY) {
 	var width = 500;
 	var padding = 50;
 
-	var svg = d3.select("#points").append("svg").attr("height", height).attr("width", width);	
+	var svg = d3.selectAll("#points").append("svg").attr("height", height).attr("width", width);	
 	var lines, circles, centroids;
 	var xScale, yScale, points;
 	var universities;
+	
+	 var g = svg.append("g").attr("transform", function (d, i) {
+            return "translate(0,0)";}); 
+	
+	var legendx = g.append("text")
+		.attr("class", "subtitle")
+		.attr("id", "xlegend")
+		.attr("dx", 250)
+		.attr("dy", 500)
+		.attr("text-anchor", "middle")
+		.attr("font-size", "0.8em")
+		.text(textX);
+
+		
+	var legendy = g.append("text")
+		.attr("class", "subtitle")
+		.attr("id", "ylegend")
+		.attr("text-anchor", "middle")
+		.attr("font-size", "0.8em")
+		.text(textY)
+		.attr("transform", function(d, i)
+		      { return "translate(10, 250) rotate(-90) "; });
 
     //starts the plot
 	d3.csv(file, function (error, data) {
@@ -40,7 +75,7 @@ function plotAnimation(file, criteriaX, criteriaY) {
 		});
 	    
 	    
-	    //y and x scale related to width and heigh
+	    //y and x scale related to width and height
 		xScale = d3.scale.linear()
 		.domain(d3.extent(points, function (point) {
 			return point.x;
@@ -50,7 +85,7 @@ function plotAnimation(file, criteriaX, criteriaY) {
 			return point.y;
 		})).range([height - padding, padding]);
 
-		lines = svg.selectAll("line").data(points);
+		lines = g.selectAll("line").data(points);
 
 		// Each point has a line that is initially pointing to itself
 		lines.enter().append("line")
@@ -60,7 +95,9 @@ function plotAnimation(file, criteriaX, criteriaY) {
 		.attr("y2", function(d) { return yScale(d.y); })
 		.style("stroke", "#aaa");
 
-		circles = svg.selectAll(".point").data(points);
+		circles = g.selectAll(".point")
+			.data(points)
+			.attr("class", "circle"); 
 
 		// Create a onclick callback that lists university data
 		circles.enter().append("circle")
@@ -82,7 +119,8 @@ function plotAnimation(file, criteriaX, criteriaY) {
 			d3.select("#loc8").text("Overall Rank: " + d.Overall);
 		});
 
-		circles2 = svg.selectAll(".point2").data(points);
+
+		circles2 = g.selectAll(".point2").data(points);
 
 		// Create a little circle in the middle of each one
 		circles2.enter().append("circle")
@@ -104,16 +142,31 @@ function plotAnimation(file, criteriaX, criteriaY) {
 			d3.select("#loc8").text("Overall Rank: " + d.Overall);
 		});
 
-		// 4 Cluster, can be changed
-		centroids = new Array(4);
+		
+		circles.append("text")
+		.attr("x", 4.5)
+		.attr("y", 4.5)
+		.attr("text-anchor", "middle")
+		.text(function(d) {
+			return d.Overall;
+		 })
+		.style("fill", "black");
+		
+
+		// 4 Clusters, can be changed
+		centroids = new Array(clusters);
 		for (var i = 0; i < centroids.length; i++) {
 			// Initialize from a randomly chosen point
 			var randomPoint = points[Math.floor(Math.random() * points.length)];
 			centroids[i] = { x: randomPoint.x, y: randomPoint.y };
 		}
 		findClosest();
+		
 	});
-	  
+       
+        
+	    
+	    console.log(randomColors[0]);
     //animation itself
 	for (var i = 0; i < 25; i++)  {
 	   waitAndChangeMeans(i+1);
@@ -143,27 +196,19 @@ function plotAnimation(file, criteriaX, criteriaY) {
 		 
         //color of the circles depending on the cluster
 		circles.style("fill", function (point) {
-          if(point.cluster == 0){
-          	return "red";
-          } else if (point.cluster == 1){
-          	return "green";
-          } else if(point.cluster == 2){
-            return "blue";
-          } else{
-          	return "orange";
+		  for (var v = 0; v < 100; v++) {
+          if(point.cluster == v){
+          	return randomColors[v];
+          } 
           }
 		});
        
         //color of the little middle circles depending on the cluster
 		circles2.style("fill", function (point) {
-          if(point.cluster == 0){
-          	return "red";
-          } else if (point.cluster == 1){
-          	return "green";
-          } else if(point.cluster == 2){
-            return "blue";
-          } else{
-          	return "orange";
+          for (var v = 0; v < 100; v++) {
+          if(point.cluster == v){
+          	return randomColors[v];
+          } 
           }
 		});
 
@@ -197,26 +242,18 @@ function plotAnimation(file, criteriaX, criteriaY) {
         
         //color of the circles depending on the cluster
 		circles.style("fill", function (point) {
-          if(point.cluster == 0){
-          	return "red";
-          } else if (point.cluster == 1){
-          	return "green";
-          } else if(point.cluster == 2){
-            return "blue";
-          } else{
-          	return "orange";
+		  for (var v = 0; v < 100; v++) {
+          if(point.cluster == v){
+          	return randomColors[v];
+          } 
           }
 		});
         //color of the little middle circles depending on the cluster
 		circles2.style("fill", function (point) {
-          if(point.cluster == 0){
-          	return "red";
-          } else if (point.cluster == 1){
-          	return "green";
-          } else if(point.cluster == 2){
-            return "blue";
-          } else{
-          	return "orange";
+          for (var v = 0; v < 100; v++) {
+          if(point.cluster == v){
+          	return randomColors[v];
+          } 
           }
 		});
 
@@ -227,5 +264,9 @@ function plotAnimation(file, criteriaX, criteriaY) {
 			return yScale(centroids[point.cluster].y);
 		});
 
+
+
 	}
+
+
 }

@@ -38,10 +38,17 @@
     	<button class="btn btn-danger" id="northAmerica">North America</button>
     	<button class="btn btn-danger" id="europeanUnion">European Union</button>
     	<button class="btn btn-danger" id="outsideUSEU">Non EU/US</button>
-    	<button class="btn btn-danger" id="top50">Top 50 All</button>
-    	<button class="btn btn-danger" id="international">Internationalization</button>
-    	<button class="btn btn-danger" id="reputation">Academic Reputation</button>
-    	<button class="btn btn-danger" id="faculty">Faculty Analysis</button>
+    	<button class="btn btn-danger" id="top30">Top 30 All</button>
+    </div>
+  </div>
+
+  <div class="row margin-bottom">
+    <div class="col-md-12 col-xs-12">
+      <button class="btn btn-danger" id="international">Internationalization</button>
+      <button class="btn btn-danger" id="reputation">Reputation</button>
+      <button class="btn btn-danger" id="faculty">Faculty Analysis</button>
+      <button class="btn btn-danger" id="plus">+ Clusters</button>
+      <button class="btn btn-danger" id="less">- Clusters</button>
     </div>
   </div>
   
@@ -70,13 +77,16 @@
 var file = "csv/EuropeanUnion.csv";  //The csv file
 var criteriaX = "International Students Score"; //The x axis
 var criteriaY = "International Faculty Score"; //The y axis
-plotAnimation(file, criteriaX, criteriaY);  //The command to the initial animation with this attr
+var clusters = 4;
+plotAnimation(file, criteriaX, criteriaY, criteriaX, criteriaY, clusters);  //The command to the initial animation with this attr
+
 
 d3.select("#northAmerica").on("click", function () {
+  
   //changes the file
   file = "csv/northAmerica.csv";
   //restarts the animation
-  plotAnimation(file, criteriaX, criteriaY);
+  plotAnimation(file, criteriaX, criteriaY, criteriaX, criteriaY, clusters);
 
 });
 
@@ -84,15 +94,15 @@ d3.select("#europeanUnion").on("click", function () {
   //changes the file
   file = "csv/EuropeanUnion.csv";
   //restarts the animation
-  plotAnimation(file, criteriaX, criteriaY);
+  plotAnimation(file, criteriaX, criteriaY, criteriaX, criteriaY, clusters);
 
 });
 
-d3.select("#top50").on("click", function () {
+d3.select("#top30").on("click", function () {
   //changes the file
-  file = "csv/top50world.csv";
+  file = "csv/top30world.csv";
   //restarts the animation
-  plotAnimation(file, criteriaX, criteriaY);
+  plotAnimation(file, criteriaX, criteriaY, criteriaX, criteriaY, clusters);
 
 });
 
@@ -100,7 +110,7 @@ d3.select("#outsideUSEU").on("click", function () {
   //changes the file
   file = "csv/NonEU-CA-US.csv";
   //restarts the animation
-  plotAnimation(file, criteriaX, criteriaY);
+  plotAnimation(file, criteriaX, criteriaY, criteriaX, criteriaY, clusters);
 
 });
 
@@ -109,7 +119,7 @@ d3.select("#international").on("click", function () {
   criteriaX = "International Students Score";
   criteriaY = "International Faculty Score";
   //restarts the animation
-  plotAnimation(file, criteriaX, criteriaY);
+  plotAnimation(file, criteriaX, criteriaY, criteriaX, criteriaY, clusters);
 
 });
 
@@ -118,7 +128,7 @@ d3.select("#reputation").on("click", function () {
   criteriaX = "Academic Reputation Score";
   criteriaY = "Employer Reputation Score";
   //restarts the animation
-  plotAnimation(file, criteriaX, criteriaY);
+  plotAnimation(file, criteriaX, criteriaY, criteriaX, criteriaY, clusters);
 
 });
 
@@ -127,7 +137,23 @@ d3.select("#faculty").on("click", function () {
   criteriaX = "Faculty Student Score";
   criteriaY = "Citations Per Faculty Score";
   //restarts the animation
-  plotAnimation(file, criteriaX, criteriaY);
+  plotAnimation(file, criteriaX, criteriaY, criteriaX, criteriaY, clusters);
+
+});
+
+d3.select("#plus").on("click", function () { 
+  //changes number of clusters
+  clusters = clusters + 1;
+  //restarts the animation
+  plotAnimation(file, criteriaX, criteriaY, criteriaX, criteriaY, clusters);
+
+});
+
+d3.select("#less").on("click", function () { 
+  //changes number of clusters
+  clusters = clusters - 1;
+  //restarts the animation
+  plotAnimation(file, criteriaX, criteriaY, criteriaX, criteriaY, clusters);
 
 });
 </script>
